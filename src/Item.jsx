@@ -2,28 +2,29 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-export const Item = ({ itemImage, itemName, itemPrice, setCartAmount }) => {
+export const Item = ({
+  itemImage,
+  itemName,
+  itemPrice,
+  cartAmount,
+  setCartAmount,
+}) => {
   const [quantity, setQuantity] = useState(0);
-  const handleDecrement = () => {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
-      setCartAmount((prev) => prev - itemPrice);
-    }
-  };
-  const handleIncrement = () => {
+  const handleClick = () => {
     setQuantity(quantity + 1);
-    setCartAmount((prev) => prev + itemPrice);
+    setCartAmount(cartAmount + itemPrice);
   };
+
   return (
     <>
       <ItemComponent>
         <img src={itemImage} alt="product-image" />
         <ItemName>{itemName}</ItemName>
-        <ItemPrice>{itemPrice}</ItemPrice>
+        <ItemPrice>${itemPrice}</ItemPrice>
         <Quantity>
-          <button onClick={handleDecrement}>-</button>
-          {quantity}
-          <button onClick={handleIncrement}>+</button>
+          <button onClick={handleClick}>
+            Add to Cart {quantity > 0 ? `(${quantity})` : null}
+          </button>
         </Quantity>
       </ItemComponent>
     </>
@@ -51,6 +52,13 @@ const Quantity = styled.div`
   display: flex;
   justify-content: space-evenly;
   margin-top: 1rem;
+  button {
+    padding: 5px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 15px;
+    cursor: pointer;
+  }
 `;
 
 export default Item;
