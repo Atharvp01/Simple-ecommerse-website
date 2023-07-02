@@ -12,6 +12,7 @@ const Navbar = () => {
             color: "antiquewhite",
             textDecoration: "none",
             paddingRight: "2rem",
+            paddingLeft: "2rem",
           }}
         >
           <h2>Shop</h2>
@@ -31,7 +32,7 @@ const NavbarContainer = styled.div`
   background-color: black;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
 `;
 
 const CartContainer = styled.div`
