@@ -3,6 +3,7 @@ import { ShopContext } from "./ShopContext";
 import { useContext } from "react";
 import CartItem from "./CartItem";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const HEADING = "Your Cart Item's";
@@ -20,6 +21,12 @@ const Cart = () => {
       <h2 style={{ textAlign: "center", marginBottom: "2rem" }}>
         Sub-Total: ${cartAmount}
       </h2>
+      <Buttons>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <button>Continue Shopping</button>
+        </Link>
+        <button>Checkout</button>
+      </Buttons>
     </>
   );
 };
@@ -30,6 +37,27 @@ const CartContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 2rem;
+`;
+
+const Buttons = styled.div`
+  margin-bottom: 2rem;
+  max-width: 100vw;
+  display: flex;
+  justify-content: center;
+  button {
+    padding: 5px;
+    color: antiquewhite;
+    background-color: black;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.25s all ease-in-out;
+    margin-left: 2rem;
+    &:hover {
+      background-color: white;
+      border: 1px solid black;
+      color: black;
+    }
+  }
 `;
 
 export default Cart;
