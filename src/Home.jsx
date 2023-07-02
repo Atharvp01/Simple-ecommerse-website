@@ -25,7 +25,9 @@ const Home = () => {
             );
           })}
         </ItemContainer>
-        <h1 style={{ marginTop: "3rem" }}>Cart Value: ${cartAmount}</h1>
+        <h1 style={{ marginTop: "3rem", marginBottom: "3rem" }}>
+          Cart Value: ${cartAmount}
+        </h1>
       </div>
     </>
   );

@@ -4,6 +4,7 @@ const Cart = () => {
   return (
     <>
       <Navbar />
+      <h1>Your Cart Item's</h1>
     </>
   );
 };

@@ -45,10 +45,16 @@ const Quantity = styled.div`
   margin-top: 1rem;
   button {
     padding: 5px;
-    background-color: white;
-    border: 1px solid black;
+    color: antiquewhite;
+    background-color: black;
     border-radius: 15px;
     cursor: pointer;
+    transition: 0.25s all ease-in-out;
+    &:hover {
+      background-color: white;
+      border: 1px solid black;
+      color: black;
+    }
   }
 `;
 
