@@ -1,19 +1,10 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import { useState } from "react";
+import { useContext } from "react";
+import { ShopContext } from "./ShopContext";
 
-export const Item = ({
-  itemImage,
-  itemName,
-  itemPrice,
-  cartAmount,
-  setCartAmount,
-}) => {
-  const [quantity, setQuantity] = useState(0);
-  const handleClick = () => {
-    setQuantity(quantity + 1);
-    setCartAmount(cartAmount + itemPrice);
-  };
+export const Item = ({ itemImage, itemName, itemPrice, id }) => {
+  const { handleClick, quantity } = useContext(ShopContext);
 
   return (
     <>
@@ -22,8 +13,8 @@ export const Item = ({
         <ItemName>{itemName}</ItemName>
         <ItemPrice>${itemPrice}</ItemPrice>
         <Quantity>
-          <button onClick={handleClick}>
-            Add to Cart {quantity > 0 ? `(${quantity})` : null}
+          <button onClick={() => handleClick(id)}>
+            Add to Cart {quantity[id] > 0 ? `(${quantity[id]})` : null}
           </button>
         </Quantity>
       </ItemComponent>
