@@ -23,9 +23,23 @@ export const ShopContextProvider = ({ children }) => {
     setCartAmount(
       (PrevcartAmount) => PrevcartAmount + products[id].productPrice
     );
-    console.log(cartAmount);
   };
-  const contextValue = { cartAmount, quantity, handleClick };
+  const removeFromCart = (id) => {
+    setQuantity((prevQuantity) => ({
+      ...prevQuantity,
+      [id]: prevQuantity[id] - 1,
+    }));
+    setCartAmount(
+      (PrevcartAmount) => PrevcartAmount - products[id].productPrice
+    );
+  };
+  const contextValue = {
+    cartAmount,
+    quantity,
+    handleClick,
+    getDefaultCart,
+    removeFromCart,
+  };
 
   return (
     <ShopContext.Provider value={contextValue}>{children}</ShopContext.Provider>
